@@ -31,5 +31,6 @@ void displayDoublyList(DoublyList* pList);
 #define TRUE		1
 #define FALSE		0
 # include <stdlib.h>
+# include <stdio.h>
 
 #endif
