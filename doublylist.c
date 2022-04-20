@@ -8,14 +8,19 @@ int main()
 	int i = 1;
 	DoublyListNode Node;
 
-	Node.data = 3;
+	Node.data = 1;
 	while (i < 5)
 	{
 		addDLElement(pList, i, Node);
+		Node.data++;
 		i++;
 	}
-	printf("%d\n", pList->headerNode.pRLink->data);
-	//displayDoublyList(pList);
+	deleteDoublyList(pList);
+	// removeDLElement(pList, 2);
+	// displayDoublyList(pList);
+
+	// printf("+++++++++++++++++++++++++++++++++++\n");
+	// RdisplayDoublyList(pList);
 	return 0;
 }
 
@@ -37,7 +42,7 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 	DoublyListNode *add_node;
 	DoublyListNode *curr;
 
-	if (pList->currentElementCount < position + 1)
+	if (position < 0 || position > pList->currentElementCount + 1)
 		return (FALSE);
 	add_node = malloc(sizeof(DoublyListNode));
 	if (!add_node)
@@ -48,7 +53,8 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 		curr = curr->pRLink;
 	add_node->pRLink = curr->pRLink;
 	add_node->pLLink = curr;
-	// curr->pRLink->pLLink = add_node;
+	if (position < pList->currentElementCount)
+		add_node->pRLink->pLLink = add_node;
 	curr->pRLink = add_node;
 	pList->currentElementCount++;
 	return (TRUE);
@@ -58,14 +64,31 @@ int removeDLElement(DoublyList* pList, int position)
 {
 	DoublyListNode *curr;
 
+	if (position > pList->currentElementCount)
+		return (FALSE);
+	curr = &pList->headerNode;
 	for (int i = 0; i < position ; i++)
 		curr = curr->pRLink;
 	curr->pLLink->pRLink = curr->pRLink;
-	curr->pRLink->pLLink = curr->pLLink;
+	if (position < pList->currentElementCount)
+		curr->pRLink->pLLink = curr->pLLink;
 	free(curr);
+	pList->currentElementCount--;
 	return (TRUE);
 }
 
+void deleteDoublyList(DoublyList* pList)
+{
+	int i = pList->currentElementCount;
+
+	while (i > 0)
+	{
+		removeDLElement(pList, i);
+		i--;
+	}
+	free(pList);
+	pList = NULL;
+}
 
 
 void displayDoublyList(DoublyList* pList)
@@ -79,5 +102,25 @@ void displayDoublyList(DoublyList* pList)
 	{
 		curr = curr->pRLink;
 		printf("%d th data is %d\n", i++, curr->data);
+	}
+}
+
+void RdisplayDoublyList(DoublyList* pList)
+{
+	int j = 1;
+	DoublyListNode *curr;
+
+	curr = &pList->headerNode;
+	while (curr->pRLink != NULL)
+	{
+		curr = curr->pRLink;
+		j++;
+	}
+	j--;
+	while (curr->pLLink != NULL)
+	{
+		printf("%d : %d\n", j, curr->data);
+		curr = curr->pLLink;
+		j--;
 	}
 }

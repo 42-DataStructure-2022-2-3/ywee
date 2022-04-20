@@ -22,6 +22,7 @@ void clearDoublyList(DoublyList* pList);
 int getDoublyListLength(DoublyList* pList);
 DoublyListNode* getDLElement(DoublyList* pList, int position);
 void displayDoublyList(DoublyList* pList);
+void RdisplayDoublyList(DoublyList* pList);
 
 #endif
 
