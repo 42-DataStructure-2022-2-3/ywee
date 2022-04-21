@@ -18,7 +18,7 @@ int main()
 	getDLElement(pList, 3);
 	//deleteDoublyList(pList);
 	// removeDLElement(pList, 2);
-	// displayDoublyList(pList);
+	 displayDoublyList(pList);
 
 	// printf("+++++++++++++++++++++++++++++++++++\n");
 	// RdisplayDoublyList(pList);
@@ -29,12 +29,9 @@ DoublyList* createDoublyList()
 {
 	DoublyList *pList;
 
-	pList = malloc(sizeof(DoublyList));
+	pList = calloc(1, sizeof(DoublyList));
 	if (!pList)
 		return (NULL);
-	pList->currentElementCount = 0;
-	pList->headerNode.pLLink = NULL;
-	pList->headerNode.pRLink = NULL;
 	return (pList);
 }
 
