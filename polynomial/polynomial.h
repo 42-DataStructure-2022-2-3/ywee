@@ -6,8 +6,8 @@
 
 typedef struct ListNodeType
 {
-	int	coef;
-	int	degree;
+	float	coef;
+	int degree;
 	struct ListNodeType* pLink;
 } ListNode;
 
@@ -18,14 +18,16 @@ typedef struct LinkedListType
 } LinkedList;
 
 LinkedList*	createLinkedList();
-int			addLLElement(LinkedList* pList, int position, ListNode element);
-int			removeLLElement(LinkedList* pList, int position);
-ListNode*	getLLElement(LinkedList* pList, int position);
-
+int			addLLElement(LinkedList* pList, float coef, int degree);
+int			removeLLElement(LinkedList* pList, int degree);
+ListNode*	getLLElement(LinkedList* pList, int degree);
 void		clearLinkedList(LinkedList* pList);
 int			getLinkedListLength(LinkedList* pList);
 void		deleteLinkedList(LinkedList* pList);
 void		displayLinkedList(LinkedList* pList);
+int 		findDegree(LinkedList* pList, int degree);
+LinkedList	*sumpoly(LinkedList *A, LinkedList *B);
+
 #endif
 
 #ifndef _COMMON_LIST_DEF_
