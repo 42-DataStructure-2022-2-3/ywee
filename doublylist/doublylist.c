@@ -55,7 +55,7 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 	add_node = malloc(sizeof(DoublyListNode));
 	if (!add_node)
 		return (FALSE);
-	add_node->data = element.data;
+	*add_node = element;
 	curr = &pList->headerNode;
 	for (int i = 0; i < position - 1 ; i++)
 		curr = curr->pRLink;
