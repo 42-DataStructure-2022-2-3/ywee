@@ -32,7 +32,6 @@ CircularList* createCircularList()
 	pList = calloc(1, sizeof(CircularList));
 	if (!pList)
 		return (NULL);
-	//pList->headerNode = NULL;
 	return (pList);
 }
 
@@ -88,7 +87,7 @@ int removeDLElement(CircularList* pList, int position)
 	CircularListNode *curr;
 	CircularListNode	*LastNode;
 
-	if (position > pList->currentElementCount)
+	if (position < 0 || position > pList->currentElementCount)
 		return (FALSE);
 	if (position == 1)
 	{
@@ -142,7 +141,7 @@ CircularListNode* getDLElement(CircularList* pList, int position)
 	CircularListNode	*curr;
 	int i;
 
-	if (position > pList->currentElementCount)
+	if (position < 0 || position > pList->currentElementCount)
 		return (NULL);
 	curr = pList->headerNode;
 	for(i = 0; i < position; i++)

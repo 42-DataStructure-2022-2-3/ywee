@@ -72,7 +72,7 @@ int removeDLElement(DoublyList* pList, int position)
 {
 	DoublyListNode *curr;
 
-	if (position > pList->currentElementCount)
+	if (position < 0 || position > pList->currentElementCount)
 		return (FALSE);
 	curr = &pList->headerNode;
 	for (int i = 0; i < position ; i++)
@@ -109,7 +109,7 @@ DoublyListNode* getDLElement(DoublyList* pList, int position)
 	DoublyListNode	*curr;
 	int i;
 
-	if (position > pList->currentElementCount)
+	if (position < 0 || position > pList->currentElementCount)
 		return (NULL);
 	curr = &pList->headerNode;
 	for(i = 0; i < position; i++)
