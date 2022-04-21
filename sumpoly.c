@@ -4,8 +4,11 @@ int addLLElement(LinkedList* pList, int position, ListNode element)
 	ListNode	*curr;
 	int			i;
 
+	if (position < 0 || position > pList->currentElementCount + 1)
+		return (FALSE);
 	i = 0;
-	new_node = malloc(sizeof(ListNode));
+	if (!new_node = malloc(sizeof(ListNode)))
+		return (FALSE);
 	*new_node = element;
 	curr = &pList->headerNode;
 	while (i < position - 1)
@@ -16,7 +19,7 @@ int addLLElement(LinkedList* pList, int position, ListNode element)
 	new_node->pLink = curr->pLink;
 	curr->pLink = new_node;
 	pList->currentElementCount++;
-	return (0);
+	return (TRUE);
 }
 
 int addPolyNodeLast(LinkedList* pList, float coef, int degree)
