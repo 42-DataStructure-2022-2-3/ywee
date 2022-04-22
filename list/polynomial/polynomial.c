@@ -9,26 +9,15 @@ int main()
 	List_A = createLinkedList();
 	List_B = createLinkedList();
 
-	int i = 0;
-	float j = 0;
-	while (i < 6)
-	{
-		new_node.coef = j;
-		new_node.degree = i;
-		addLLElement(List_A, i + 1, j * 2);
-		i++;
-		j++;
-	}
-	i = 1;
-	j = 0;
-	while (i < 6)
-	{
-		new_node.coef = j;
-		new_node.degree = i;
-		addLLElement(List_B, i + 1, j);
-		i++;
-		j++;
-	}
+	addLLElement(List_A, 6, 6);
+    addLLElement(List_A, 4, 5);
+    addLLElement(List_A, 2, 2);
+
+
+	addLLElement(List_B, 1, 5);
+	addLLElement(List_B, 2, 4);
+	addLLElement(List_B, 3, 2);
+	addLLElement(List_B, 4, 0);
 	LinkedList *sum;
 	sum = sumpoly(List_A, List_B);
 	printf("+++++++++++++++ LIST_A +++++++++++++++\n");
@@ -149,7 +138,7 @@ void	displayLinkedList(LinkedList* pList)
 	ListNode	*curr;
 	int			i;
 
-	if (pList == NULL || &pList->headerNode.pLink == NULL)
+	if (pList == NULL || pList->headerNode.pLink == NULL)
 		return ;
 	i = 0;
 	curr = pList->headerNode.pLink;
@@ -196,24 +185,36 @@ LinkedList* sumpoly(LinkedList *A, LinkedList *B)
 	curr_b = B->headerNode.pLink;
 	while (curr_a != NULL || curr_b != NULL)
 	{
-		if (curr_a->degree > curr_b->degree)
-		{
-			addLLElement(sum, curr_a->coef, curr_a->degree);
-			if (curr_a != NULL)
+		if (curr_a != NULL && curr_b != NULL)
+		{	
+			if (curr_a->degree > curr_b->degree)
+			{
+				addLLElement(sum, curr_a->coef, curr_a->degree);
 				curr_a = curr_a->pLink;
-		}
-		else if (curr_a->degree < curr_b->degree)
+			}
+			else if (curr_a->degree < curr_b->degree)
+			{
+				addLLElement(sum, curr_b->coef, curr_b->degree);
+				curr_b = curr_b->pLink;
+			}	
+			else if (curr_a->degree == curr_b->degree)
+			{
+				addLLElement(sum, curr_a->coef + curr_b->coef, curr_a->degree);
+				curr_a = curr_a->pLink;
+				curr_b = curr_b->pLink;
+			}
+		}		
+		else if (curr_a == NULL)
 		{
 			addLLElement(sum, curr_b->coef, curr_b->degree);
-			if (curr_b != NULL)
-				curr_b = curr_b->pLink;
-		}
-		else
-		{
-			addLLElement(sum, curr_a->coef + curr_b->coef, curr_a->degree);
-			curr_a = curr_a->pLink;
 			curr_b = curr_b->pLink;
 		}
+		else if (curr_b == NULL)
+		{
+			addLLElement(sum, curr_a->coef, curr_a->degree);
+			curr_a = curr_a->pLink;
+		}
+	
 	}
 	return (sum);
 }
