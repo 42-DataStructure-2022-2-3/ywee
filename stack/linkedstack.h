@@ -21,6 +21,8 @@ void deleteLinkedStack(LinkedStack* pStack);
 int isLinkedStackEmpty(LinkedStack* pStack);
 
 char *str_rev(LinkedStack *pStack, int size, char *pSource);
+int	matchSymbol(StackNode *checkSymbol, StackNode symbol);
+int checkBracketMatching(LinkedStack* pStack, char *expression);
 
 #include <stdio.h>
 #include <stdlib.h>
