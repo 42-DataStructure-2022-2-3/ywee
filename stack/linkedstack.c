@@ -1,33 +1,33 @@
 #include "linkedstack.h"
 
-int main()
-{
-	StackNode element;
-	StackNode* popelement;
-	LinkedStack *list;
+// int main()
+// {
+// 	StackNode element;
+// 	StackNode* popelement;
+// 	LinkedStack *list;
 
-	list = createLinkedStack();
+// 	list = createLinkedStack();
 
-	element.data = 'a';
-	pushLS(list, element);
-	element.data = 'b';
-	pushLS(list, element);
-	element.data = 'c';
-	pushLS(list, element);
+// 	element.data = 'a';
+// 	pushLS(list, element);
+// 	element.data = 'b';
+// 	pushLS(list, element);
+// 	element.data = 'c';
+// 	pushLS(list, element);
 
-	printf("%c\n", list->pTopElement->data);
-	popelement = popLS(list);
-	printf("%c\n", popelement->data);
-	printf("%c\n", list->pTopElement->data);
+// 	printf("%c\n", list->pTopElement->data);
+// 	popelement = popLS(list);
+// 	printf("%c\n", popelement->data);
+// 	printf("%c\n", list->pTopElement->data);
 
-	deleteLinkedStack(list);
-	// while(1)
-	// {
+// 	deleteLinkedStack(list);
+// 	// while(1)
+// 	// {
 
-	// }
-	system("leaks a.out > leaks_result; cat leaks_result | grep leaked && rm -rf leaks_result");
-	return (0);
-}
+// 	// }
+// 	system("leaks a.out > leaks_result; cat leaks_result | grep leaked && rm -rf leaks_result");
+// 	return (0);
+// }
 LinkedStack* createLinkedStack()
 {
 	LinkedStack *pStack;

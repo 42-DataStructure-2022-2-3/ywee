@@ -18,8 +18,9 @@ int pushLS(LinkedStack* pStack, StackNode element);
 StackNode* popLS(LinkedStack* pStack);
 StackNode* peekLS(LinkedStack* pStack);
 void deleteLinkedStack(LinkedStack* pStack);
-int isLinkedStackFull(LinkedStack* pStack);
 int isLinkedStackEmpty(LinkedStack* pStack);
+
+char *str_rev(LinkedStack *pStack, int size, char *pSource);
 
 #include <stdio.h>
 #include <stdlib.h>
