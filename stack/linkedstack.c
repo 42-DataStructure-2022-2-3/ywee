@@ -91,3 +91,18 @@ int isLinkedStackEmpty(LinkedStack* pStack)
 	return (FALSE);
 }
 
+void	displayLinkedList(LinkedStack* pStack)
+{
+	StackNode	*curr;
+	int			i;
+
+	i = 0;
+	curr = pStack->pTopElement;
+	printf("currentElementCount : %d\n", pStack->currentElementCount);
+	while (curr != NULL)
+	{
+		printf("%d th data is %c\n", i + 1, curr->data);
+		curr = curr->pLink;
+		i++;
+	}
+}
