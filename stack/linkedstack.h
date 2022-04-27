@@ -27,6 +27,7 @@ typedef struct LinkedTokenType
 typedef struct StackNodeType
 {
 	int	data;
+	MapPosition node;
 	struct StackNodeType* pLink;
 } StackNode;
 
